@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TicketListComponent } from './ticket-list/ticket-list.component';
+import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
 
 
 
@@ -13,6 +14,10 @@ import { TicketListComponent } from './ticket-list/ticket-list.component';
       {
         path: 'tickets',
         component: TicketListComponent,
+      },
+      {
+        path: 'tickets/:ticketId',
+        component: TicketDetailsComponent,
       },
       {
         path: '**',

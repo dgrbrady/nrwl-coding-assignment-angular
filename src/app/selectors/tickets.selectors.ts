@@ -1,3 +1,8 @@
-import { createFeatureSelector } from "@ngrx/store";
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { Ticket } from '../backend.service';
 
-export const selectTickets = createFeatureSelector('tickets');
+export const selectTickets = createFeatureSelector<Ticket[]>('tickets');
+export const selectTicketById = (id: number) =>  
+  createSelector(selectTickets, (tickets) => tickets.find(
+    (ticket) => ticket.id === id
+  ));

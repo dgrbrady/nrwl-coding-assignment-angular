@@ -8,12 +8,14 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { ticketsReducer } from './reducers/ticket.reducers';
 import { TicketListItemComponent } from './ticket-list-item/ticket-list-item.component';
+import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TicketListComponent,
-    TicketListItemComponent
+    TicketListItemComponent,
+    TicketDetailsComponent
   ],
   imports: [
     BrowserModule,
