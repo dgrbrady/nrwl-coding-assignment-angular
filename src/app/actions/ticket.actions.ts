@@ -1,4 +1,4 @@
-import { createAction, props } from "@ngrx/store";
+import { createAction, props } from '@ngrx/store';
 import { Ticket } from '../backend.service';
 
 export const fetchTickets = createAction(
@@ -14,4 +14,9 @@ export const fetchTicket = createAction(
 export const updateTicket = createAction(
   '[Ticket Details] Ticket Updated',
   props<{ticket: Ticket}>()
-)
+);
+
+export const createTicket = createAction(
+  '[Ticket Form] Ticket Created',
+  props<{ticket: Ticket}>()
+);

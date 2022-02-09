@@ -1,5 +1,5 @@
 <app-ticket-form
   [ticket]="ticket$ | async" 
   [users]="users$ | async"
-  (formSubmit)="handleFormSubmit($event)">
+  (updateTicket)="updateTicket($event)">
 </app-ticket-form>

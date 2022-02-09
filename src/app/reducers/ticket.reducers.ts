@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { fetchTicket, fetchTickets, updateTicket } from '../actions/ticket.actions';
+import { createTicket, fetchTicket, fetchTickets, updateTicket } from '../actions/ticket.actions';
 import { Ticket } from '../backend.service';
 
 export const initialState: Ticket[] = [];
@@ -26,5 +26,6 @@ export const ticketsReducer = createReducer(
     );
     copiedState[ticketIndex] = ticket;
     return copiedState;
-  }) 
+  }),
+  on(createTicket, (state, { ticket }) => ([...state, ticket])),
 );

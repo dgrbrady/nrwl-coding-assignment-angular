@@ -1,13 +1,15 @@
 <form [formGroup]="ticketForm" (submit)="saveForm()">
-  <label for="ticket-id">Ticket ID</label>
-  <input type="text" id="ticket-id" formControlName="id">
-  <label for="assignee-id">Assignee ID</label>
-  <select id="assignee-id" formControlName="assigneeId">
-    <option *ngFor="let user of users" [ngValue]="user.id">{{user.name}}</option>
-  </select>
-  <label for="completed">Completed?</label>
-  <input type="checkbox" id="completed" formControlName="completed">
+  <div [ngClass]="{hidden: ticket === undefined}">
+    <label for="ticket-id">Ticket ID</label>
+    <input type="text" id="ticket-id" formControlName="id">
+    <label for="assignee-id">Assignee ID</label>
+    <select id="assignee-id" formControlName="assigneeId">
+      <option *ngFor="let user of users" [ngValue]="user.id">{{user.name}}</option>
+    </select>
+    <label for="completed">Completed?</label>
+    <input type="checkbox" id="completed" formControlName="completed">
+  </div>
   <label for="description">Description</label>
   <textarea id="description" formControlName="description"></textarea>
-  <button type="submit">Save Changes</button>
+  <button type="submit" [disabled]="ticketForm.pristine">Save Changes</button>
 </form>

@@ -1,4 +1,8 @@
-<app-ticket-list-item *ngFor="let ticket of tickets$ | async" [ticket]="ticket">
+<h1>Existing Tickets</h1>
 
+<app-ticket-list-item *ngFor="let ticket of tickets$ | async" [ticket]="ticket">
 </app-ticket-list-item>
 
+<h2>New Ticket</h2>
+
+<app-ticket-form (createTicket)="createTicket($event)"></app-ticket-form>

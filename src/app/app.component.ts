@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { fetchTickets } from './actions/ticket.actions';
+import { fetchUsers } from './actions/user.actions';
 import { BackendService } from './backend.service';
 
 @Component({
@@ -14,6 +15,10 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.backend.tickets().subscribe(
       (tickets) => this.store.dispatch(fetchTickets({ tickets }))
+    );
+    this.backend.users()
+      .subscribe(
+      (users) => this.store.dispatch((fetchUsers({ users })))
     );
   }
 }

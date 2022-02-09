@@ -12,6 +12,8 @@ export class TicketFormComponent implements OnChanges {
   @Input() ticket: Ticket;
   @Input() users: User[];
   @Output() formSubmit = new EventEmitter<Ticket>();
+  @Output() updateTicket = new EventEmitter<Partial<Omit<Ticket, 'id'>>>();
+  @Output() createTicket = new EventEmitter<Partial<Omit<Ticket, 'id'>>>();
 
   ticketForm = new FormGroup({
       id: new FormControl({value: '', disabled: true}),
@@ -30,11 +32,15 @@ export class TicketFormComponent implements OnChanges {
   }
 
   saveForm() {
-    this.formSubmit.next(this.ticketForm.value);
+    console.log('saveForm', this.ticket);
+    if (this.ticket !== undefined) {
+      this.updateTicket.next(this.ticketForm.value);
+    } else {
+      this.createTicket.next(this.ticketForm.value);
+    }
   }
 
   private updateForm(ticket: Ticket) {
-    console.log(ticket)
     this.ticketForm.setValue({
       id: ticket.id,
       assigneeId: ticket.assigneeId,

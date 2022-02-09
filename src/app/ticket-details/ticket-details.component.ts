@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { fetchTicket, updateTicket } from '../actions/ticket.actions';
+import { createTicket, fetchTicket, updateTicket } from '../actions/ticket.actions';
 import { fetchUsers } from '../actions/user.actions';
 import { BackendService, Ticket } from '../backend.service';
 import { selectTicketById } from '../selectors/ticket.selectors';
@@ -36,7 +36,7 @@ export class TicketDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.backend.users()
+    /* this.backend.users()
       .pipe(takeUntil(this.destroy$))
       .subscribe(
       (users) => this.store.dispatch((fetchUsers({ users })))
@@ -45,7 +45,17 @@ export class TicketDetailsComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe(
       (ticket) => this.store.dispatch(fetchTicket({ ticket }))
-    );
+    ); */
+  }
+
+
+
+  updateTicket(ticketChanges: Partial<Omit<Ticket, 'id'>>) {
+    this.backend.update(this.ticketId, ticketChanges)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(
+      (ticket) => this.store.dispatch(updateTicket({ ticket }))
+    )
   }
 
   handleFormSubmit(ticketChanges: Ticket) {
