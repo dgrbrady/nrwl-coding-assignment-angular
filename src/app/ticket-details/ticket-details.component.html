@@ -1,5 +1,7 @@
-<app-ticket-form
-  [ticket]="ticket$ | async" 
-  [users]="users$ | async"
-  (updateTicket)="updateTicket($event)">
-</app-ticket-form>
+<div class="container">
+  <app-ticket-form
+    [ticket]="ticket$ | async" 
+    [users]="users$ | async"
+    (updateTicket)="updateTicket($event)">
+  </app-ticket-form>
+</div>
