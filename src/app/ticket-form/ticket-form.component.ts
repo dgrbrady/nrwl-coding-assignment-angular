@@ -11,7 +11,6 @@ import { Ticket, User } from '../backend.service';
 export class TicketFormComponent implements OnChanges {
   @Input() ticket: Ticket;
   @Input() users: User[];
-  @Output() formSubmit = new EventEmitter<Ticket>();
   @Output() updateTicket = new EventEmitter<Partial<Omit<Ticket, 'id'>>>();
   @Output() createTicket = new EventEmitter<Partial<Omit<Ticket, 'id'>>>();
 
