@@ -5,6 +5,7 @@ import {BackendService} from './backend.service';
 import { TicketListComponent } from './ticket-list/ticket-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { StoreModule } from '@ngrx/store';
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([]),
   ],
   providers: [BackendService],
   bootstrap: [AppComponent]
