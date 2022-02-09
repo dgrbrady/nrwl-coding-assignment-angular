@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import {BackendService} from './backend.service';
 import { TicketListComponent } from './ticket-list/ticket-list.component';
 import { AppRoutingModule } from './app-routing.module';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    StoreModule.forRoot({}, {}),
   ],
   providers: [BackendService],
   bootstrap: [AppComponent]
