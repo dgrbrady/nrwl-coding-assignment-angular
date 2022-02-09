@@ -1,10 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { createTicket, fetchTicket, updateTicket } from '../actions/ticket.actions';
-import { fetchUsers } from '../actions/user.actions';
+import { updateTicket } from '../actions/ticket.actions';
 import { BackendService, Ticket } from '../backend.service';
 import { selectTicketById } from '../selectors/ticket.selectors';
 import { selectUsers } from '../selectors/user.selectors';
@@ -15,7 +14,7 @@ import { selectUsers } from '../selectors/user.selectors';
   styleUrls: ['./ticket-details.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TicketDetailsComponent implements OnInit, OnDestroy {
+export class TicketDetailsComponent implements OnDestroy {
 
   private ticketId = Number(this.route.snapshot.paramMap.get('ticketId'));
   private ticketSelector = selectTicketById(this.ticketId);
@@ -34,21 +33,6 @@ export class TicketDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.destroySubject.next(true);
   }
-
-  ngOnInit(): void {
-    /* this.backend.users()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(
-      (users) => this.store.dispatch((fetchUsers({ users })))
-    );
-    this.backend.ticket(this.ticketId)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(
-      (ticket) => this.store.dispatch(fetchTicket({ ticket }))
-    ); */
-  }
-
-
 
   updateTicket(ticketChanges: Partial<Omit<Ticket, 'id'>>) {
     this.backend.update(this.ticketId, ticketChanges)
