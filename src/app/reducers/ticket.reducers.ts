@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { fetchTicket, fetchTickets } from '../actions/ticket.actions';
+import { fetchTicket, fetchTickets, updateTicket } from '../actions/ticket.actions';
 import { Ticket } from '../backend.service';
 
 export const initialState: Ticket[] = [];
@@ -18,5 +18,13 @@ export const ticketsReducer = createReducer(
       copiedState.push(ticket);
     }
     return copiedState;
-  })
+  }),
+  on(updateTicket, (state, { ticket }) => {
+    const copiedState = [...state];
+    const ticketIndex = copiedState.findIndex(
+      (ticketFromState) => ticketFromState.id === ticket.id
+    );
+    copiedState[ticketIndex] = ticket;
+    return copiedState;
+  }) 
 );

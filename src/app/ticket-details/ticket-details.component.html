@@ -1,2 +1,2 @@
-<p>ticket-details works!</p>
-{{ ticket$ | async | json }}
+<app-ticket-form [ticket]="ticket$ | async" (formSubmit)="handleFormSubmit($event)">
+</app-ticket-form>

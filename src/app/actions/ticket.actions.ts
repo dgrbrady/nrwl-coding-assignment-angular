@@ -10,3 +10,8 @@ export const fetchTicket = createAction(
   '[Ticket Details/API] Fetch Ticket Success',
   props<{ticket: Ticket}>()
 );
+
+export const updateTicket = createAction(
+  '[Ticket Details] Ticket Updated',
+  props<{ticket: Ticket}>()
+)
