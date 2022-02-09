@@ -32,12 +32,12 @@ export class TicketFormComponent implements OnChanges {
   }
 
   saveForm() {
-    console.log('saveForm', this.ticket);
     if (this.ticket !== undefined) {
       this.updateTicket.next(this.ticketForm.value);
     } else {
       this.createTicket.next(this.ticketForm.value);
     }
+    this.ticketForm.markAsPristine();
   }
 
   private updateForm(ticket: Ticket) {
