@@ -6,16 +6,19 @@ import { TicketListComponent } from './ticket-list/ticket-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { ticketsReducer } from './reducers/ticket.reducers';
+import { TicketListItemComponent } from './ticket-list-item/ticket-list-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TicketListComponent
+    TicketListComponent,
+    TicketListItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({tickets: ticketsReducer}),
     EffectsModule.forRoot([]),
   ],
   providers: [BackendService],

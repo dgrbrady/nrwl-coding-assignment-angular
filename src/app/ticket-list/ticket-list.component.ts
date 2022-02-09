@@ -1,13 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { selectTickets } from '../selectors/tickets.selectors';
 
 @Component({
   selector: 'app-ticket-list',
   templateUrl: './ticket-list.component.html',
-  styleUrls: ['./ticket-list.component.css']
+  styleUrls: ['./ticket-list.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TicketListComponent implements OnInit {
+  tickets$ = this.store.select(selectTickets);
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
   }

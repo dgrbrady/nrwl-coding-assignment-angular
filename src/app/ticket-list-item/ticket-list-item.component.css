@@ -1,0 +1,42 @@
+.ticket-item {
+  display: flex;
+  background-color: var(--background-color);
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+}
+
+.ticket-field {
+  padding: 1rem 2rem;
+  border-left: 1px solid var(--accent-color);
+  border-right: 1px solid var(--accent-color);
+}
+
+.ticket-field:first-of-type {
+  border-left: none;
+}
+
+.ticket-field:last-of-type {
+  border-right: none;
+}
+
+.ticket-id {
+  flex: 0 0 0;
+}
+
+.ticket-description {
+  flex: 1 1 auto;
+}
+
+.ticket-assigneeId {
+  flex: 0 0 0;
+}
+
+.ticket-completed {
+  flex: 0 0 0;
+}
+
+.ticket-field-header {
+  display: block;
+  border: none;
+}

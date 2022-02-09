@@ -14,6 +14,10 @@ import { TicketListComponent } from './ticket-list/ticket-list.component';
         path: 'tickets',
         component: TicketListComponent,
       },
+      {
+        path: '**',
+        redirectTo: 'tickets',
+      }
     ])
   ],
   exports: [RouterModule]

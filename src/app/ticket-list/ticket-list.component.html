@@ -1,1 +1,4 @@
-<p>ticket-list works!</p>
+<app-ticket-list-item *ngFor="let ticket of tickets$ | async" [ticket]="ticket">
+
+</app-ticket-list-item>
+

@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0.5rem;
+}
+
+app-ticket-list-item {
+  margin-bottom: 1rem;
+  transition-property: transform;
+  transition-duration: 50ms;
+  transition-timing-function: ease-out;
+}
+
+app-ticket-list-item:hover {
+  transform: scale(1.01);
+}
