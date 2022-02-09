@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectTickets } from '../selectors/tickets.selectors';
+import { selectTickets } from '../selectors/ticket.selectors';
 
 @Component({
   selector: 'app-ticket-list',

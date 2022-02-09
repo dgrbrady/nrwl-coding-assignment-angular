@@ -11,6 +11,7 @@ import { TicketListItemComponent } from './ticket-list-item/ticket-list-item.com
 import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TicketFormComponent } from './ticket-form/ticket-form.component';
+import { usersReducer } from './reducers/user.reducers';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { TicketFormComponent } from './ticket-form/ticket-form.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({tickets: ticketsReducer}),
+    StoreModule.forRoot({tickets: ticketsReducer, users: usersReducer}),
     EffectsModule.forRoot([]),
   ],
   providers: [BackendService],

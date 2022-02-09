@@ -1,2 +1,5 @@
-<app-ticket-form [ticket]="ticket$ | async" (formSubmit)="handleFormSubmit($event)">
+<app-ticket-form
+  [ticket]="ticket$ | async" 
+  [users]="users$ | async"
+  (formSubmit)="handleFormSubmit($event)">
 </app-ticket-form>

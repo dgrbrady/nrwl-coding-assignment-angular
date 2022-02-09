@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Ticket } from '../backend.service';
+import { Ticket, User } from '../backend.service';
 
 @Component({
   selector: 'app-ticket-form',
@@ -10,6 +10,7 @@ import { Ticket } from '../backend.service';
 })
 export class TicketFormComponent implements OnChanges {
   @Input() ticket: Ticket;
+  @Input() users: User[];
   @Output() formSubmit = new EventEmitter<Ticket>();
 
   ticketForm = new FormGroup({

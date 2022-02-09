@@ -2,7 +2,9 @@
   <label for="ticket-id">Ticket ID</label>
   <input type="text" id="ticket-id" formControlName="id">
   <label for="assignee-id">Assignee ID</label>
-  <input type="text" id="assignee-id" formControlName="assigneeId">
+  <select id="assignee-id" formControlName="assigneeId">
+    <option *ngFor="let user of users" [ngValue]="user.id">{{user.name}}</option>
+  </select>
   <label for="completed">Completed?</label>
   <input type="checkbox" id="completed" formControlName="completed">
   <label for="description">Description</label>

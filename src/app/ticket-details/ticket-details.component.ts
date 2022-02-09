@@ -4,8 +4,10 @@ import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { fetchTicket, updateTicket } from '../actions/ticket.actions';
+import { fetchUsers } from '../actions/user.actions';
 import { BackendService, Ticket } from '../backend.service';
-import { selectTicketById } from '../selectors/tickets.selectors';
+import { selectTicketById } from '../selectors/ticket.selectors';
+import { selectUsers } from '../selectors/user.selectors';
 
 @Component({
   selector: 'app-ticket-details',
@@ -21,6 +23,7 @@ export class TicketDetailsComponent implements OnInit, OnDestroy {
   private destroy$ = this.destroySubject.asObservable();
 
   ticket$ = this.store.select(this.ticketSelector);
+  users$ = this.store.select(selectUsers);
 
   constructor(
     private backend: BackendService,
@@ -33,11 +36,16 @@ export class TicketDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.backend.users()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(
+      (users) => this.store.dispatch((fetchUsers({ users })))
+    );
     this.backend.ticket(this.ticketId)
       .pipe(takeUntil(this.destroy$))
       .subscribe(
       (ticket) => this.store.dispatch(fetchTicket({ ticket }))
-    )
+    );
   }
 
   handleFormSubmit(ticketChanges: Ticket) {
